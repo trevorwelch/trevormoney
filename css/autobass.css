@@ -16,7 +16,7 @@ body {
 
 a {
   font-weight: 500;
-  color: #009C5E; }
+  color: #202124; }
 
 button {
   font-size: inherit; }
@@ -25,7 +25,7 @@ button {
   text-decoration: none;
   color: #E6E6E6; }
   .nav-item:hover {
-    color: #009C5E; }
+    color: #202124; }
 
 h1 {
   font-size: 2rem;
@@ -231,10 +231,10 @@ button, .button {
   text-decoration: none;
   padding: 0.25em 1em;
   display: inline-block;
-  color: #009C5E;
+  color: #202124;
   background-color: transparent;
   border: 0;
-  box-shadow: inset 0 0 0 3px #009C5E;
+  box-shadow: inset 0 0 0 3px #202124;
   border-radius: 3px;
   -webkit-transition-property: color, background-color, box-shadow, -webkit-transform;
           transition-property: color, background-color, box-shadow, transform;
@@ -245,19 +245,19 @@ button, .button {
   cursor: pointer; }
   button:hover, .button:hover {
     color: #203036;
-    background-color: #009C5E;
-    box-shadow: inset 0 0 0 3px #009C5E, 0 0 0 3px rgba(255, 255, 255, 0.75), 0 0 0 5px rgba(255, 85, 34, 0.5);
+    background-color: #202124;
+    box-shadow: inset 0 0 0 3px #202124, 0 0 0 3px rgba(255, 255, 255, 0.75), 0 0 0 5px rgba(255, 85, 34, 0.5);
     -webkit-transform: scale(1.0625);
         -ms-transform: scale(1.0625);
             transform: scale(1.0625); }
   button:focus, .button:focus {
     outline: 0;
-    box-shadow: inset 0 0 0 3px #009C5E, 0 0 0 3px white, 0 0 0 5px rgba(255, 85, 34, 0.5); }
+    box-shadow: inset 0 0 0 3px #202124, 0 0 0 3px white, 0 0 0 5px rgba(255, 85, 34, 0.5); }
   button:active, .button:active {
     -webkit-transform: scale(0.96875);
         -ms-transform: scale(0.96875);
             transform: scale(0.96875);
-    box-shadow: inset 0 2px 6px 0 rgba(0, 0, 0, 0.25), 0 0 0 3px white, 0 0 0 5px #009C5E; }
+    box-shadow: inset 0 2px 6px 0 rgba(0, 0, 0, 0.25), 0 0 0 3px white, 0 0 0 5px #202124; }
 
 .button-wide {
   padding: 0.25em 3em; }
@@ -272,7 +272,7 @@ button, .button {
 .button-icon {
   box-shadow: none; }
   .button-icon:hover {
-    color: #009C5E;
+    color: #202124;
     background-color: rgba(0, 0, 0, 0.0625);
     box-shadow: none; }
   .button-icon:focus {
@@ -317,7 +317,7 @@ progress {
   background-color: rgba(0, 0, 0, 0.125); }
 
 .red {
-  color: #009C5E; }
+  color: #202124; }
 
 .dark-gray {
   color: #203036; }
@@ -347,11 +347,11 @@ progress {
   background: rgba(255, 85, 34, 0.25); }
 
 .theme-dark-red {
-  color: #009C5E;
+  color: #202124;
   background-color: #203036; }
   .theme-dark-red .button {
-    color: #009C5E;
-    box-shadow: inset 0 0 0 3px #009C5E;
+    color: #202124;
+    box-shadow: inset 0 0 0 3px #202124;
     -webkit-transition-property: color, background-color, box-shadow, -webkit-transform;
             transition-property: color, background-color, box-shadow, transform;
     -webkit-transition-duration: 0.1s;
@@ -362,20 +362,20 @@ progress {
     .theme-dark-red .button:hover {
       color: #203036;
       background-color: rgba(255, 85, 34, 0.875);
-      box-shadow: inset 0 0 0 3px #009C5E, 0 0 0 3px #203036, 0 0 0 5px rgba(255, 85, 34, 0.5);
+      box-shadow: inset 0 0 0 3px #202124, 0 0 0 3px #203036, 0 0 0 5px rgba(255, 85, 34, 0.5);
       -webkit-transform: scale(1.0625);
           -ms-transform: scale(1.0625);
               transform: scale(1.0625); }
     .theme-dark-red .button:focus {
       outline: 0;
-      box-shadow: inset 0 0 0 3px #009C5E, 0 0 0 3px #203036, 0 0 0 5px rgba(255, 85, 34, 0.5); }
+      box-shadow: inset 0 0 0 3px #202124, 0 0 0 3px #203036, 0 0 0 5px rgba(255, 85, 34, 0.5); }
     .theme-dark-red .button:active {
       -webkit-transform: scale(0.96875);
           -ms-transform: scale(0.96875);
               transform: scale(0.96875);
-      box-shadow: inset 0 2px 6px 0 rgba(0, 0, 0, 0.25), 0 0 0 3px #203036, 0 0 0 5px #009C5E; }
+      box-shadow: inset 0 2px 6px 0 rgba(0, 0, 0, 0.25), 0 0 0 3px #203036, 0 0 0 5px #202124; }
   .theme-dark-red .nav-item {
-    color: #009C5E; }
+    color: #202124; }
     .theme-dark-red .nav-item:hover {
       background-color: rgba(0, 0, 0, 0.0625); }
   .theme-dark-red input::-moz-selection {
