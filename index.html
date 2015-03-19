@@ -10,16 +10,17 @@
       trevor $
     </title>
     <meta name="author" content="TW2015">
-    <meta name="description" content="Xnlvg is an arts collective">
+    <meta name="description" content="trevor $ producer of beats">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
     <link rel="stylesheet" href="/css/tachyons.min.css">
+    <link rel="stylesheet" href="/css/autobass.css"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="../js/okshadow.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/vue/0.10.6/vue.min.js"></script>
     <script src="http://jxnblk.com/plangular/v-plangular.min.js"></script>
   </head>
-  <body class="wi-100">
+  <body class="wi-100 Site">
 
     <script>
     $(function(){
@@ -33,41 +34,81 @@
       <h1 class='clip'> xnlvg - music arts etc., sometimes in kansas city </h1>
     </header>
       
+  
+    <main class="Site-content mam" id="vm"> 
 
-    <main class='mam'> 
+      <div id='okshadow' v-component="plangular" class="v-base-l ptl-ns w-60 center">
+          <h2 class="center m0 mbs"> trevor <span style="color: #009C5E">$</span> </h2>
+          <h3 class="center m0 mbs current-track tegaki"> {{ player.currentTrack.title || '&nbsp;' }} </h3>
+          <div class="table mb1 rounded">
+            <div class="table-cell px2">
+              <button class="button-icon" v-on="click: previous()">
+                <svg v-plangular-icon="'previous'"></svg>
+              </button>
+            </div>
+            <div class="table-cell px2">
+              <button class="h3 button-icon" v-on="click: player.playPause(player.i, player.playlistIndex)">
+                <span v-if="!player.playing"><svg v-plangular-icon="'play'"></svg></span>
+                <span v-if="player.playing"><svg v-plangular-icon="'pause'"></svg></span>
+              </button>
+            </div>
+            <div class="table-cell px2">
+              <button class="button-icon" v-on="click: next()">
+                <svg v-plangular-icon="'next'"></svg>
+              </button>
+            </div>
+          </div>
+          <progress value="{{ player.currentTime / player.duration || 0 }}"
+            v-on="click: player.seek($event)">
+            {{ player.currentTime / duration }}
+          </progress>
+          <p class="h6 white">{{ player.currentTime | prettyTime }} - {{ player.duration | prettyTime }}</p>
 
-    <div v-component="plangular" class="v-base-l ptl-ns center">
-        <!-- <h3 class="center m0 mbs current-track tegaki"> {{ player.currentTrack.title || '&nbsp;' }} </h3> -->
-        <div class="table mb1 rounded">
-          <div class="table-cell px2">
-            <button class="button-icon" v-on="click: previous()">
-              <svg v-plangular-icon="'previous'"></svg>
-            </button>
-          </div>
-          <div class="table-cell px2">
-            <button class="h3 button-icon" v-on="click: player.playPause(player.i, player.playlistIndex)">
-              <span v-if="!player.playing"><svg v-plangular-icon="'play'"></svg></span>
-              <span v-if="player.playing"><svg v-plangular-icon="'pause'"></svg></span>
-            </button>
-          </div>
-          <div class="table-cell px2">
-            <button class="button-icon" v-on="click: next()">
-              <svg v-plangular-icon="'next'"></svg>
-            </button>
-          </div>
+        <div v-component="plangular" v-src="'https://soundcloud.com/trevormoney/sets/aaa/s-VDkNJ'" class="">
+
+        <div v-repeat="t : tracks">
+    <a href="#{{ example.id }}" class="block p1 nav-item"
+      v-on="click: playPause($index)"
+      v-class="player.currentTrack == t ? 'bg-darken-1' : ''">
+      <span class="mr1">{{ $index }}.</span>
+      {{ t.user.username }} - {{ t.title }}
+    </a>
+  </div>
+</div>
+
+
+            <a href="#{{ example.id }}" class="block s-trsp f5-ns py1 nav-item sc-size dim white b--aqua hover-gray sc-font"
+              v-on="click: playPause()"
+              v-class="bg-darken-1: player.playing == track">
+              <!-- {{ user.username }} -  -->{{ title }}
+            </a>
         </div>
-        <progress value="{{ player.currentTime / player.duration || 0 }}"
-          v-on="click: player.seek($event)">
-          {{ player.currentTime / duration }}
-        </progress>
-        <p class="h6 white">{{ player.currentTime | prettyTime }} - {{ player.duration | prettyTime }}</p>
+
+
+
+
       </div>
-      
-      <img id='okshadow' src="../img/tegaki-logo-basic.jpg">
-      <!-- <p> This is the phone number: (925) 831-8706 </p> -->
+
+
+
+      <p>kansas city / la</p>
+
+
     </main>
 
           <script> var vm = new Vue({ el: '#vm' }) </script>
+
+  
+
+    <footer>
+
+      <div class="tc">
+
+        <small> an <a href="http://xnlvg.com" style="text-decoration: none; color: #2D2D2D" target="_blank">xnlvg</a> worldview </small>
+
+      </div>
+
+    </footer>
 
   </body>
 </html>
