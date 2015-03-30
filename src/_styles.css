@@ -6,3 +6,8 @@
 
 */
 
+@media screen and (max-device-width: 800px) {
+    .main-full {
+    	width: 100% !important;
+    }
+}

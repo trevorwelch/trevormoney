@@ -37,7 +37,7 @@
   
     <main class="Site-content mam" id="vm"> 
 
-      <div id='okshadow' v-component="plangular" class="v-base-l ptl-ns w-60 center">
+      <div id='okshadow' v-component="plangular" class="v-base-l ptl-ns w-60 main-full center">
           <h2 class="center m0 mbs"> trevor <span style="color: #E1AE1F">$</span> </h2>
           <h3 class="center m0 mbs current-track tegaki"> {{ player.currentTrack.title || '&nbsp;' }} </h3>
           <div class="table mb1 rounded">
@@ -64,7 +64,7 @@
           </progress>
           <p class="h6 white">{{ player.currentTime | prettyTime }} - {{ player.duration | prettyTime }}</p>
 
-        <div v-component="plangular" v-src="'https://soundcloud.com/trevormoney/sets/aaa/'" class="">
+        <div v-component="plangular" v-src="'http://soundcloud.com/trevormoney/sets/a2015'" class="">
 
         <div v-repeat="t : tracks">
     <a href="#{{ example.id }}" class="block p1 nav-item"
