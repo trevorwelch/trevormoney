@@ -20,7 +20,14 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/vue/0.10.6/vue.min.js"></script>
     <script src="../js/v-plangular.min.js"></script>
   </head>
-  <body class="wi-100 Site">
+  <body class="wi-100 Site" ng-app="app">
+
+    <script>
+    var app = angular.module('app', ['plangular'])
+      .config(function(plangularConfigProvider){
+        plangularConfigProvider.clientId = '4a5d77108f0a3cecd88cfb61abd41b79';
+      });
+  </script>
 
     <script>
     $(function(){
