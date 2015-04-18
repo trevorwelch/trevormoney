@@ -14,20 +14,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
     <link rel="stylesheet" href="/css/tachyons.min.css">
-    <link rel="stylesheet" href="/css/autobass.css"/>
+    <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/bassdock/1.2.1/bassdock.min.css">
+    
+      <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/vhs/0.1.0/vhs.min.css">
+    
+    <style>
+      a { word-wrap: break-word }
+      code {
+        font-size: 87.5%;
+        color: #222;
+        background-color: rgba(127, 219, 255, .25);
+      }
+      .container-narrow { max-width: 48em }
+      .bg-dark { background-color:#102630; }
+      .button-logo {
+        width: 2em;
+        height: 2em;
+        border-radius: 10000px;
+        border-width: 3px;
+      }
+      .button-logo:hover {
+        color: #102630;
+        background-color: #ff4136;
+        opacity: 0.9;
+        box-shadow: 0 0 0 2px rgba(255,65,54,.5);
+      }
+      .button-logo:before,
+      .button-logo:after {
+        border-radius: inherit;
+      }
+      .button-outline { border-width: 2px }
+      .button-transparent:focus { box-shadow: inset 0 0 0 2px }
+      .button-grow { transition: transform, box-shadow, .05s ease }
+      .button-grow:hover { transform: scale(1.0625) }
+      .button-grow:active { transform: scale(.9375) }
+      .icon { top: .03125em }
+    </style>
+
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="../js/okshadow.min.js"></script>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/vue/0.10.6/vue.min.js"></script>
-    <script src="../js/v-plangular.min.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+<script src="http://d2v52k3cl9vedd.cloudfront.net/plangular/3.0.1/plangular.min.js"></script>
   </head>
   <body class="wi-100 Site" ng-app="app">
 
-    <script>
-    var app = angular.module('app', ['plangular'])
-      .config(function(plangularConfigProvider){
-        plangularConfigProvider.clientId = '4a5d77108f0a3cecd88cfb61abd41b79';
-      });
-  </script>
+
 
     <script>
     $(function(){
@@ -41,60 +77,58 @@
       <h1 class='clip'> xnlvg - music arts etc., sometimes in kansas city </h1>
     </header>
       
+          <h2 class="center m1 mbs"> trevor <span style="color: #E1AE1F">$</span> </h2>
   
-    <main class="Site-content mam" id="vm"> 
-
-      <div id='okshadow' v-component="plangular" class="v-base-l ptl-ns w-60 main-full center">
-          <h2 class="center m0 mbs"> trevor <span style="color: #E1AE1F">$</span> </h2>
-          <h3 class="center m0 mbs current-track tegaki"> {{ player.currentTrack.title || '&nbsp;' }} </h3>
-          <div class="table mb1 rounded">
-            <div class="table-cell px2">
-              <button class="button-icon" v-on="click: previous()">
-                <svg v-plangular-icon="'previous'"></svg>
-              </button>
-            </div>
-            <div class="table-cell px2">
-              <button class="h3 button-icon" v-on="click: player.playPause(player.i, player.playlistIndex)">
-                <span v-if="!player.playing"><svg v-plangular-icon="'play'"></svg></span>
-                <span v-if="player.playing"><svg v-plangular-icon="'pause'"></svg></span>
-              </button>
-            </div>
-            <div class="table-cell px2">
-              <button class="button-icon" v-on="click: next()">
-                <svg v-plangular-icon="'next'"></svg>
-              </button>
-            </div>
-          </div>
-          <progress value="{{ player.currentTime / player.duration || 0 }}"
-            v-on="click: player.seek($event)">
-            {{ player.currentTime / duration }}
-          </progress>
-          <p class="h6 white">{{ player.currentTime | prettyTime }} - {{ player.duration | prettyTime }}</p>
-
-        <div v-component="plangular" v-src="'http://soundcloud.com/trevormoney/sets/a2015'" class="">
-
-        <div v-repeat="t : tracks">
-    <a href="#{{ example.id }}" class="block p1 nav-item"
-      v-on="click: playPause($index)"
-      v-class="player.currentTrack == t ? 'bg-darken-1' : ''">
-      <span class="mr1">{{ $index }}.</span>
-      {{ t.user.username }} - {{ t.title }}
-    </a>
+    <main id="okshadow" class="Site-content mam" id="vm"> 
+    <div plangular="http://soundcloud.com/trevormoney/sets/a2015" class="mb3 bg-darken-2 rounded">
+  <div class="p2" >
+    <div class="flex flex-center">
+      <h4 class="m0 flex-auto">{{playlist.user.username}}</h4>
+      <samp class="h6">{{ currentTime | hhmmss }} / {{ duration | hhmmss }}</samp>
+    </div>
+    <h3 class="h1 caps mt0">{{playlist.title}}</h3>
+    <div class="flex flex-center">
+      <button class="flex-none h3 button button-narrow button-transparent button-grow rounded"
+        title="Play Previous Track"
+        ng-click="previous()">
+        <svg class="icon geomicon" data-icon="previous" viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 H8 V14 L28 4 V28 L8 18 V28 H4 z "></path></svg>
+      </button>
+      <button class="flex-none h1 button button-transparent button-grow rounded"
+        title="Play/Pause"
+        ng-click="playPause(index)">
+        <svg ng-if="player.playing !== track.src" class="icon geomicon" data-icon="play" viewBox="0 0 32 32" width="32" height="32" style="fill:currentcolor"><path d="M4 4 L28 16 L4 28 z "></path></svg>
+        <svg ng-if="player.playing === track.src" class="icon geomicon" data-icon="pause" viewBox="0 0 32 32" width="32" height="32" style="fill:currentcolor"><path d="M4 4 H12 V28 H4 z M20 4 H28 V28 H20 z "></path></svg>
+      </button>
+      <button class="flex-none h3 button mr2 button-narrow button-transparent button-grow rounded"
+        title="Play Next Track"
+        ng-click="next()">
+        <svg class="icon geomicon" data-icon="next" viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L24 14 V4 H28 V28 H24 V18 L4 28 z "></path></svg>
+      </button>
+      <progress
+        class="progress"
+        ng-click="seek($event)"
+        ng-value="currentTime / duration || 0">
+        {{ currentTime / duration }}
+      </progress>
+    </div>
   </div>
+  <ul class="list-reset">
+    <li ng-repeat="track in tracks">
+      <button
+        class="flex flex-center full-width left-align button button-transparent"
+        title="Play {{track.title}}"
+        ng-class="{'is-active': player.playing === track.src }"
+        ng-click="playPause($index)">
+        <span class="flex-auto">
+          {{track.user.username}} - {{track.title}}
+        </span>
+        <span class="h6">
+          {{ track.duration / 1000 | hhmmss }}
+        </span>
+      </button>
+    </li>
+  </ul>
 </div>
-
-
-            <a href="#{{ example.id }}" class="block s-trsp f5-ns py1 nav-item sc-size dim white b--aqua hover-gray sc-font"
-              v-on="click: playPause()"
-              v-class="bg-darken-1: player.playing == track">
-              <!-- {{ user.username }} -  -->{{ title }}
-            </a>
-        </div>
-
-
-
-
-      </div>
 
 
 
@@ -103,7 +137,6 @@
 
     </main>
 
-          <script> var vm = new Vue({ el: '#vm' }) </script>
 
   
 
@@ -116,6 +149,13 @@
       </div>
 
     </footer>
+
+        <script>
+    var app = angular.module('app', ['plangular'])
+      .config(function(plangularConfigProvider){
+        plangularConfigProvider.clientId = '4a5d77108f0a3cecd88cfb61abd41b79';
+      });
+  </script>
 
   </body>
 </html>
